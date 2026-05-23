@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkipF 軽井沢合宿 旅のしおり 2026</title>
+<style>
+:root {
+  --primary: #2E75B6;
+  --accent: #70AD47;
+  --warm: #ED7D31;
+  --purple: #7B5EA7;
+  --danger: #C00000;
+  --lb: #D5E8F0;
+  --lg: #E2EFDA;
+  --lo: #FCE4D6;
+  --lp: #EDE7F6;
+  --ly: #FFF2CC;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Hiragino Sans','Yu Gothic','Noto Sans JP',sans-serif; background: #F0F4F8; color: #333; line-height: 1.65; font-size: 15px; }
+
+/* Header */
+.hero { background: linear-gradient(135deg,#1a4a7a,#2E75B6,#5B9BD5); color:#fff; text-align:center; padding:48px 20px 36px; }
+.hero h1 { font-size:2.6em; letter-spacing:.03em; margin-bottom:6px; }
+.hero .sub { font-size:1.15em; opacity:.88; margin-bottom:10px; }
+.hero .meta { font-size:.92em; opacity:.75; }
+
+/* Nav */
+.nav { background:#fff; border-bottom:3px solid var(--primary); position:sticky; top:0; z-index:100; overflow-x:auto; white-space:nowrap; box-shadow:0 2px 6px rgba(0,0,0,.1); }
+.nav a { display:inline-block; padding:11px 14px; color:var(--primary); text-decoration:none; font-size:.82em; font-weight:700; border-bottom:3px solid transparent; transition:.2s; }
+.nav a:hover { background:var(--lb); border-bottom-color:var(--primary); }
+
+/* Layout */
+.wrap { max-width:1060px; margin:0 auto; padding:22px 16px; }
+
+/* Card */
+.card { background:#fff; border-radius:14px; padding:26px; margin-bottom:22px; box-shadow:0 2px 10px rgba(0,0,0,.07); }
+.card-title { display:flex; align-items:center; gap:10px; padding-bottom:14px; margin-bottom:20px; border-bottom:3px solid; }
+.card-title h2 { font-size:1.35em; }
+.card-title .icon { font-size:1.3em; }
+
+/* Day banner */
+.day-banner { border-radius:10px; color:#fff; text-align:center; padding:18px; margin-bottom:22px; }
+.day-banner h2 { font-size:1.7em; }
+.day-banner p { opacity:.88; margin-top:4px; font-size:.95em; }
+.d1 { background:linear-gradient(135deg,#1a4a7a,#2E75B6); }
+.d2 { background:linear-gradient(135deg,#3D7A1A,#70AD47); }
+.dphoto { background:linear-gradient(135deg,#4a2e80,#7B5EA7); }
+
+/* Info grid */
+.igrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:14px; }
+.icard { background:#F7FBFF; border-radius:8px; padding:14px 16px; border-left:4px solid var(--primary); }
+.icard.g { border-left-color:var(--accent); background:#F6FBF3; }
+.icard.o { border-left-color:var(--warm); background:#FEF9F5; }
+.icard.p { border-left-color:var(--purple); background:#F8F5FD; }
+.icard .lbl { font-size:.75em; color:#888; font-weight:700; text-transform:uppercase; letter-spacing:.06em; margin-bottom:3px; }
+.icard .val { font-size:1.05em; font-weight:700; color:#222; }
+.icard .sub { font-size:.82em; color:#999; margin-top:3px; }
+
+/* Alert */
+.alert { border-radius:8px; padding:13px 16px; margin-bottom:14px; border-left:5px solid; }
+.alert.w { background:var(--ly); border-color:#E0A800; }
+.alert.d { background:#FFF0F0; border-color:var(--danger); }
+.alert.i { background:var(--lb); border-color:var(--primary); }
+.alert strong { display:block; margin-bottom:4px; }
+.alert ul { padding-left:18px; line-height:2; }
+
+/* Timeline */
+.tl-row { display:flex; gap:12px; margin-bottom:7px; align-items:flex-start; }
+.tl-time { min-width:105px; font-weight:700; color:var(--primary); font-size:.9em; padding-top:10px; flex-shrink:0; }
+.tl-box { flex:1; border-radius:9px; padding:10px 15px; border-left:4px solid; }
+.tl-box.b { background:var(--lb); border-color:var(--primary); }
+.tl-box.g { background:var(--lg); border-color:var(--accent); }
+.tl-box.o { background:var(--lo); border-color:var(--warm); }
+.tl-box strong { display:block; font-size:.95em; }
+.tl-box small { color:#666; font-size:.83em; }
+
+/* Table */
+.tbl { width:100%; border-collapse:collapse; font-size:.88em; margin-top:10px; }
+.tbl th { padding:9px 12px; text-align:left; font-weight:700; color:#fff; }
+.tbl td { padding:9px 12px; border-bottom:1px solid #EEE; vertical-align:middle; }
+.tbl tr:last-child td { border-bottom:none; }
+.tbl tr:nth-child(even) td { background:#FAFAFA; }
+.tbl tr:hover td { background:#F0F7FF; }
+.tbl.b th { background:var(--primary); }
+.tbl.g th { background:var(--accent); }
+.tbl.o th { background:var(--warm); }
+.tbl.p th { background:var(--purple); }
+.tbl.r th { background:var(--danger); }
+
+/* Tag */
+.tag { display:inline-block; padding:2px 8px; border-radius:12px; font-size:.75em; font-weight:700; margin:1px; }
+.tag.b { background:var(--lb); color:#1a5276; }
+.tag.g { background:var(--lg); color:#2d6a0f; }
+.tag.o { background:var(--lo); color:#a84700; }
+.tag.p { background:var(--lp); color:#4a2e80; }
+.tag.r { background:#FFE0E0; color:var(--danger); }
+
+/* Member cards */
+.mgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:10px; margin-bottom:22px; }
+.mcard { background:#F9F9F9; border-radius:10px; padding:13px; border-top:4px solid var(--primary); transition:.15s; }
+.mcard:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,.1); }
+.mcard .nn { font-size:1.05em; font-weight:700; color:var(--primary); }
+.mcard .rg { font-size:.78em; color:#999; margin-top:3px; }
+.mcard .nt { font-size:.75em; color:#777; margin-top:4px; font-style:italic; }
+
+/* Period badge */
+.pbadge { display:inline-block; color:#fff; font-weight:700; font-size:.82em; padding:4px 14px; border-radius:20px; margin-bottom:12px; }
+
+/* Room table */
+.room-wrap { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:16px; }
+.room-blk { border-radius:10px; overflow:hidden; border:1px solid #DDD; }
+.room-blk-hd { padding:10px 16px; color:#fff; font-weight:700; font-size:.95em; }
+.room-tbl { width:100%; border-collapse:collapse; }
+.room-tbl td { border:1px solid #DDD; padding:7px 10px; height:36px; font-size:.88em; }
+.room-tbl .no { width:32px; text-align:center; font-weight:700; color:#fff; }
+
+/* Photo timetable empty cell */
+.empty-time { color:#bbb; font-style:italic; background:#FAF8FF !important; }
+
+/* Print */
+.print-btn { position:fixed; bottom:22px; right:22px; background:var(--primary); color:#fff; border:none; border-radius:50px; padding:11px 20px; cursor:pointer; font-size:.9em; font-weight:700; box-shadow:0 4px 14px rgba(0,0,0,.2); z-index:200; }
+.print-btn:hover { background:#1a4a7a; }
+
+@media print {
+  .nav,.print-btn { display:none; }
+  .card { box-shadow:none; border:1px solid #DDD; page-break-inside:avoid; }
+}
+@media(max-width:600px){
+  .hero h1 { font-size:1.7em; }
+  .tl-time { min-width:78px; font-size:.8em; }
+  .mgrid { grid-template-columns:repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>🏡 SkipF 軽井沢合宿</h1>
+  <div class="sub">旅のしおり 2026</div>
+  <div class="meta">2026年6月6日(土)〜7日(日)　｜　ハウスヴィラ軽井沢（4棟貸切）　｜　33名参加</div>
+</header>
+
+<nav class="nav">
+  <a href="#basic">📋 基本情報</a>
+  <a href="#access">🚗 アクセス</a>
+  <a href="#day1">DAY 1</a>
+  <a href="#photo">📸 撮影</a>
+  <a href="#day2">DAY 2</a>
+  <a href="#lunch">🥗 ランチ</a>
+  <a href="#staff">👑 幹事</a>
+  <a href="#room">🏠 部屋割り</a>
+  <a href="#members">👥 参加者</a>
+  <a href="#allergy">⚠️ アレルギー</a>
+</nav>
+
+<div class="wrap">
+
+<!-- 基本情報 -->
+<div class="card" id="basic">
+  <div class="card-title" style="border-color:var(--primary)">
+    <span class="icon">📋</span><h2 style="color:var(--primary)">基本情報</h2>
+  </div>
+  <div class="igrid">
+    <div class="icard"><div class="lbl">日程</div><div class="val">2026年6月6日(土)〜7日(日)</div></div>
+    <div class="icard"><div class="lbl">会場</div><div class="val">ハウスヴィラ軽井沢（4棟貸切）</div><div class="sub">平谷棟・サウナ棟・足湯棟・檜風呂棟</div></div>
+    <div class="icard g"><div class="lbl">参加人数</div><div class="val">33名</div><div class="sub">宿泊30名・日帰り3名</div></div>
+    <div class="icard o"><div class="lbl">宿泊費</div><div class="val">約17,500円/人</div></div>
+    <div class="icard"><div class="lbl">チェックイン</div><div class="val">14:00</div><div class="sub">アーリーチェックイン 12:00〜可</div></div>
+    <div class="icard"><div class="lbl">チェックアウト</div><div class="val">10:00</div></div>
+  </div>
+  <div style="margin-top:18px">
+    <div class="alert w">
+      <strong>⚠️ 重要なお知らせ</strong>
+      <ul>
+        <li>最終人数確定: <strong>6月3日(水)まで</strong></li>
+        <li>ランチのキャンセル: <strong>6月5日(金)まで</strong>（以降キャンセル料100%）</li>
+        <li>宿泊者全員の名前登録が必要です</li>
+        <li>軽井沢は <strong>23時以降コンビニを含む全店が閉まります</strong>（買い出しは早めに！）</li>
+        <li>当日キャンセルは返金対応あり</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- アクセス・持ち物 -->
+<div class="card" id="access">
+  <div class="card-title" style="border-color:var(--accent)">
+    <span class="icon">🚗</span><h2 style="color:var(--accent)">アクセス・持ち物</h2>
+  </div>
+  <div class="igrid" style="margin-bottom:18px">
+    <div class="icard g"><div class="lbl">軽井沢駅から</div><div class="val">タクシー 約15分</div></div>
+    <div class="icard g"><div class="lbl">追分駅（しなの鉄道）から</div><div class="val">タクシー 約5分</div></div>
+    <div class="icard g"><div class="lbl">駐車場</div><div class="val">各棟3台×4棟 ＝ 最大12台</div><div class="sub">事前フォームで申告要</div></div>
+  </div>
+  <div style="display:flex;gap:14px;flex-wrap:wrap">
+    <div style="flex:1;min-width:200px;background:var(--lo);border-radius:9px;padding:15px">
+      <strong style="color:var(--warm);display:block;margin-bottom:8px">📦 必須の持ち物</strong>
+      <ul style="padding-left:18px;line-height:2.1;font-size:.92em"><li>PC・タブレット</li><li>宿泊用品</li><li>着替え</li></ul>
+    </div>
+    <div style="flex:1;min-width:200px;background:var(--lg);border-radius:9px;padding:15px">
+      <strong style="color:var(--accent);display:block;margin-bottom:8px">✨ あると良いもの</strong>
+      <ul style="padding-left:18px;line-height:2.1;font-size:.92em"><li>カメラ（撮影交換用）</li><li>筆記用具</li></ul>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 1 -->
+<div class="card" id="day1">
+  <div class="day-banner d1">
+    <h2>DAY 1　6月6日(土)</h2>
+    <p>チェックイン・ワーク・プロフィール撮影・BBQ夕食</p>
+  </div>
+
+  <h3 style="color:var(--primary);margin-bottom:14px">⏰ タイムライン</h3>
+  <div>
+    <div class="tl-row"><div class="tl-time">〜12:00</div><div class="tl-box g"><strong>【3期生グループ】軽井沢駅周辺でランチ</strong><small>3期生のみ（Minamiさんは不参加）</small></div></div>
+    <div class="tl-row"><div class="tl-time">10:30〜</div><div class="tl-box b"><strong>📸 うりちゃん（カメラマン）到着・撮影開始可能</strong><small>1〜2カット: 約10分/人　｜　5〜10カット: 約15分/人</small></div></div>
+    <div class="tl-row"><div class="tl-time">12:00〜</div><div class="tl-box b"><strong>アーリーチェックイン開始（希望者）</strong></div></div>
+    <div class="tl-row"><div class="tl-time">14:00</div><div class="tl-box o"><strong>✅ 全員チェックイン</strong></div></div>
+    <div class="tl-row"><div class="tl-time">14:00〜</div><div class="tl-box b"><strong>📝 ワーク開始</strong><small>振り返り・授業計画作成・Notion進捗管理・講師への質問タイム</small></div></div>
+    <div class="tl-row"><div class="tl-time">14:00〜</div><div class="tl-box b"><strong>📸 プロフィール撮影（うりちゃん）</strong><small>合宿風景の撮影も実施</small></div></div>
+    <div class="tl-row"><div class="tl-time">夕方〜夜</div><div class="tl-box o"><strong>🍖 BBQ夕食・交流・自由時間</strong></div></div>
+  </div>
+
+  <h3 style="color:var(--accent);margin:24px 0 12px">🚃 主な到着予定</h3>
+  <table class="tbl g">
+    <thead><tr><th style="width:130px">到着予定</th><th style="width:200px">メンバー</th><th>備考</th></tr></thead>
+    <tbody>
+      <tr><td><strong>11:00頃〜</strong></td><td>しほママ</td><td>早めに到着予定</td></tr>
+      <tr><td><strong>12:00前</strong></td><td>nozomi</td><td>軽井沢駅着　<span class="tag r">アレルギー：鯖・にしん</span></td></tr>
+      <tr><td><strong>お昼〜夕方</strong></td><td>おつね</td><td>幹事・部屋割り担当</td></tr>
+      <tr><td><strong>13:30頃</strong></td><td>みづき</td><td>軽井沢駅着</td></tr>
+      <tr><td><strong>14:00〜</strong></td><td><strong>全員</strong></td><td>チェックイン</td></tr>
+      <tr><td><strong>16:00頃</strong></td><td>よっしー</td><td>遅めの到着予定</td></tr>
+      <tr><td><strong>14:00〜17:00</strong></td><td>Minami</td><td>交通手段確定後に詳細連絡</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 撮影タイムテーブル -->
+<div class="card" id="photo">
+  <div class="day-banner dphoto">
+    <h2>📸 撮影タイムテーブル</h2>
+    <p>カメラマン: うりちゃん　10:30〜 到着</p>
+  </div>
+
+  <div class="alert d" style="margin-bottom:18px">
+    <strong>⚠️ タイムテーブルは現在調整中です</strong>
+    チェックイン前に撮影希望の方は幹事にご連絡ください。
+  </div>
+
+  <h3 style="color:var(--purple);margin-bottom:10px">チェックイン前（10:30〜14:00）</h3>
+  <p style="font-size:.85em;color:#777;margin-bottom:10px">早着が確認されているメンバーです。他に早着できる方は幹事まで。</p>
+  <table class="tbl p">
+    <thead><tr><th style="width:130px">撮影時間</th><th style="width:160px">呼び名</th><th style="width:120px">カット数</th><th>備考</th></tr></thead>
+    <tbody>
+      <tr><td class="empty-time">（未定）</td><td><strong>しほママ</strong></td><td><span class="tag p">1〜2カット</span></td><td>到着：11時過ぎ予定</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>nozomi</strong></td><td><span class="tag p">1〜2カット</span></td><td>到着：軽井沢駅12時前　<span class="tag r">アレルギー：鯖・にしん</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="color:var(--purple);margin:22px 0 10px">チェックイン後（14:00〜）　5〜10カット <small style="font-weight:normal;color:#888">目安 15分/人</small></h3>
+  <table class="tbl p">
+    <thead><tr><th style="width:130px">撮影時間</th><th style="width:160px">呼び名</th><th style="width:120px">カット数</th><th>備考</th></tr></thead>
+    <tbody>
+      <tr><td class="empty-time">（未定）</td><td><strong>わかな</strong></td><td><span class="tag p">5〜10カット</span></td><td>0期・長野県</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>さっきー</strong></td><td><span class="tag p">5〜10カット</span></td><td>1期</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>よっしー</strong></td><td><span class="tag p">5〜10カット</span></td><td>2期・到着16:00頃</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>Tomoki</strong></td><td><span class="tag p">5〜10カット</span></td><td>2期</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>みなこちゃん</strong></td><td><span class="tag p">5〜10カット</span></td><td>2期</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>おつね</strong></td><td><span class="tag p">5〜10カット</span></td><td>2期・到着お昼〜夕方</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>ちえっぴ</strong></td><td><span class="tag p">5〜10カット</span></td><td>2期</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>イワトモ</strong></td><td><span class="tag p">5〜10カット</span></td><td>講師・長野県</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>ゆうちゃん</strong></td><td><span class="tag p">5〜10カット</span></td><td>1期・日帰り</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>あやや</strong></td><td><span class="tag p">5〜10カット</span></td><td>2期・日帰り</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="color:var(--purple);margin:22px 0 10px">チェックイン後（14:00〜）　1〜2カット <small style="font-weight:normal;color:#888">目安 10分/人</small></h3>
+  <table class="tbl p">
+    <thead><tr><th style="width:130px">撮影時間</th><th style="width:160px">呼び名</th><th style="width:120px">カット数</th><th>備考</th></tr></thead>
+    <tbody>
+      <tr><td class="empty-time">（未定）</td><td><strong>わだちゃん</strong></td><td><span class="tag p">1〜2カット</span></td><td>1期</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>まめちゃん</strong></td><td><span class="tag p">1〜2カット</span></td><td>1期・幹事</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>たか</strong></td><td><span class="tag p">1〜2カット</span></td><td>1期</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>ゆみちゃん</strong></td><td><span class="tag p">1〜2カット</span></td><td>1期</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>Mika</strong></td><td><span class="tag p">1〜2カット</span></td><td>3期</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>みかん</strong></td><td><span class="tag p">1〜2カット</span></td><td>3期</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>mayumi</strong></td><td><span class="tag p">1〜2カット</span></td><td>3期</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>くるみん</strong></td><td><span class="tag p">1〜2カット</span></td><td>3期</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>ロールパンナ</strong></td><td><span class="tag p">1〜2カット</span></td><td>3期・長野県</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>しお</strong></td><td><span class="tag p">1〜2カット</span></td><td>3期</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>いく</strong></td><td><span class="tag p">1〜2カット</span></td><td>3期</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>なるみん</strong></td><td><span class="tag p">1〜2カット</span></td><td>3期・14:00到着</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>Minami</strong></td><td><span class="tag p">1〜2カット</span></td><td>3期・幹事</td></tr>
+      <tr><td class="empty-time">（未定）</td><td><strong>おまめさん</strong></td><td><span class="tag p">1〜2カット</span></td><td>3期・日帰り</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- DAY 2 -->
+<div class="card" id="day2">
+  <div class="day-banner d2">
+    <h2>DAY 2　6月7日(日)</h2>
+    <p>チェックアウト・観光・ランチ・解散</p>
+  </div>
+
+  <h3 style="color:var(--accent);margin-bottom:14px">⏰ タイムライン</h3>
+  <div>
+    <div class="tl-row"><div class="tl-time">〜10:00</div><div class="tl-box g"><strong>🧹 チェックアウト・片付け</strong></div></div>
+    <div class="tl-row"><div class="tl-time">10:00〜</div><div class="tl-box g"><strong>🗺️ 観光（各コース自由行動）</strong><small>コース別に分かれて出発</small></div></div>
+    <div class="tl-row"><div class="tl-time">13:30〜</div><div class="tl-box o"><strong>🥗 ランチ @ ロンギングハウス軽井沢</strong><small>30名・コース料理　野菜がおいしいレストラン</small></div></div>
+    <div class="tl-row"><div class="tl-time">15:30頃</div><div class="tl-box g"><strong>👋 解散・帰宅</strong></div></div>
+  </div>
+
+  <h3 style="color:var(--accent);margin:24px 0 12px">🗺️ 観光コース（アンケート結果で確定予定）</h3>
+  <table class="tbl g">
+    <thead><tr><th style="width:90px">コース</th><th style="width:200px">行き先</th><th>メモ</th></tr></thead>
+    <tbody>
+      <tr><td><strong>コース1</strong></td><td>千住博美術館</td><td>イワトモさんなど ／ ヴィラから車で約15分</td></tr>
+      <tr><td><strong>コース2</strong></td><td>白糸の滝</td><td>歩きがあるため参加者要確認</td></tr>
+      <tr><td><strong>コース3</strong></td><td>ハルニレテラス散策</td><td>星野リゾートエリア</td></tr>
+      <tr><td><strong>コース4</strong></td><td>軽井沢周辺ショッピング</td><td>アウトレット等</td></tr>
+      <tr><td><strong>コース5</strong></td><td>ドライブ</td><td>リエさんなど（歩きなし）</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ランチ -->
+<div class="card" id="lunch">
+  <div class="card-title" style="border-color:var(--warm)">
+    <span class="icon">🥗</span><h2 style="color:var(--warm)">2日目ランチ詳細</h2>
+  </div>
+  <div class="igrid">
+    <div class="icard o"><div class="lbl">お店</div><div class="val">ロンギングハウス軽井沢</div><div class="sub">野菜がおいしいレストラン</div></div>
+    <div class="icard o"><div class="lbl">時間</div><div class="val">13:30〜</div><div class="sub">ラストオーダー 13:30</div></div>
+    <div class="icard o"><div class="lbl">予約人数</div><div class="val">30名</div></div>
+    <div class="icard o"><div class="lbl">メニュー</div><div class="val">全員同じコース（選定中）</div><div class="sub">2,800円 / 3,800円 / 4,800円コース</div></div>
+  </div>
+  <div class="alert d" style="margin-top:14px">
+    <strong>⚠️ キャンセルは6月5日(金)まで</strong>
+    それ以降はキャンセル料100%が発生します。アレルギーの申告・メニュー確定も6/5まで。
+  </div>
+</div>
+
+<!-- 幹事チーム -->
+<div class="card" id="staff">
+  <div class="card-title" style="border-color:var(--warm)">
+    <span class="icon">👑</span><h2 style="color:var(--warm)">幹事チーム</h2>
+  </div>
+  <table class="tbl o">
+    <thead><tr><th style="width:220px">担当</th><th>メンバー</th></tr></thead>
+    <tbody>
+      <tr><td><strong>総括・食事担当</strong></td><td>まめちゃん</td></tr>
+      <tr><td><strong>部屋割り担当</strong></td><td>おつね</td></tr>
+      <tr><td><strong>写真撮影担当</strong></td><td>なか</td></tr>
+      <tr><td><strong>食事担当（買い出し含む）</strong></td><td>Tomoki・ちえっぴ</td></tr>
+      <tr><td><strong>2日目観光担当</strong></td><td>長野メンバー中心（わかな・ロールパンナ・NAMIちゃん）</td></tr>
+      <tr><td><strong>その他サポート</strong></td><td>Minami・わかな・ロールパンナ</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 部屋割り -->
+<div class="card" id="room">
+  <div class="card-title" style="border-color:var(--primary)">
+    <span class="icon">🏠</span><h2 style="color:var(--primary)">部屋割り</h2>
+  </div>
+  <p style="color:#777;font-size:.88em;margin-bottom:18px">担当: おつね　1棟に8〜10名程度　全4棟貸切</p>
+  <div class="room-wrap">
+    <div class="room-blk">
+      <div class="room-blk-hd" style="background:var(--primary)">🏡 平谷棟（最大11名）</div>
+      <table class="room-tbl">
+        <tr><td class="no" style="background:var(--primary)">1</td><td></td><td class="no" style="background:var(--primary)">2</td><td></td></tr>
+        <tr><td class="no" style="background:var(--primary)">3</td><td></td><td class="no" style="background:var(--primary)">4</td><td></td></tr>
+        <tr><td class="no" style="background:var(--primary)">5</td><td></td><td class="no" style="background:var(--primary)">6</td><td></td></tr>
+        <tr><td class="no" style="background:var(--primary)">7</td><td></td><td class="no" style="background:var(--primary)">8</td><td></td></tr>
+        <tr><td class="no" style="background:var(--primary)">9</td><td></td><td class="no" style="background:var(--primary)">10</td><td></td></tr>
+        <tr><td class="no" style="background:var(--primary)">11</td><td colspan="3"></td></tr>
+      </table>
+    </div>
+    <div class="room-blk">
+      <div class="room-blk-hd" style="background:#5B7FA6">🧖 サウナ棟（〜10名）</div>
+      <table class="room-tbl">
+        <tr><td class="no" style="background:#5B7FA6">1</td><td></td><td class="no" style="background:#5B7FA6">2</td><td></td></tr>
+        <tr><td class="no" style="background:#5B7FA6">3</td><td></td><td class="no" style="background:#5B7FA6">4</td><td></td></tr>
+        <tr><td class="no" style="background:#5B7FA6">5</td><td></td><td class="no" style="background:#5B7FA6">6</td><td></td></tr>
+        <tr><td class="no" style="background:#5B7FA6">7</td><td></td><td class="no" style="background:#5B7FA6">8</td><td></td></tr>
+        <tr><td class="no" style="background:#5B7FA6">9</td><td></td><td class="no" style="background:#5B7FA6">10</td><td></td></tr>
+      </table>
+    </div>
+    <div class="room-blk">
+      <div class="room-blk-hd" style="background:var(--accent)">🦶 足湯棟（〜10名）</div>
+      <table class="room-tbl">
+        <tr><td class="no" style="background:var(--accent)">1</td><td></td><td class="no" style="background:var(--accent)">2</td><td></td></tr>
+        <tr><td class="no" style="background:var(--accent)">3</td><td></td><td class="no" style="background:var(--accent)">4</td><td></td></tr>
+        <tr><td class="no" style="background:var(--accent)">5</td><td></td><td class="no" style="background:var(--accent)">6</td><td></td></tr>
+        <tr><td class="no" style="background:var(--accent)">7</td><td></td><td class="no" style="background:var(--accent)">8</td><td></td></tr>
+        <tr><td class="no" style="background:var(--accent)">9</td><td></td><td class="no" style="background:var(--accent)">10</td><td></td></tr>
+      </table>
+    </div>
+    <div class="room-blk">
+      <div class="room-blk-hd" style="background:var(--warm)">♨️ 檜風呂棟（〜10名）</div>
+      <table class="room-tbl">
+        <tr><td class="no" style="background:var(--warm)">1</td><td></td><td class="no" style="background:var(--warm)">2</td><td></td></tr>
+        <tr><td class="no" style="background:var(--warm)">3</td><td></td><td class="no" style="background:var(--warm)">4</td><td></td></tr>
+        <tr><td class="no" style="background:var(--warm)">5</td><td></td><td class="no" style="background:var(--warm)">6</td><td></td></tr>
+        <tr><td class="no" style="background:var(--warm)">7</td><td></td><td class="no" style="background:var(--warm)">8</td><td></td></tr>
+        <tr><td class="no" style="background:var(--warm)">9</td><td></td><td class="no" style="background:var(--warm)">10</td><td></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 参加者一覧 -->
+<div class="card" id="members">
+  <div class="card-title" style="border-color:var(--primary)">
+    <span class="icon">👥</span><h2 style="color:var(--primary)">参加者一覧（33名）</h2>
+  </div>
+
+  <span class="pbadge" style="background:#8E24AA">0期 1名</span>
+  <div class="mgrid">
+    <div class="mcard" style="border-top-color:#8E24AA"><div class="nn" style="color:#8E24AA">わかな</div><div class="rg">📍 長野県</div><div class="nt">★幹事・2日目観光担当　⚠️ アレルギー：そば・長芋</div></div>
+  </div>
+
+  <span class="pbadge" style="background:var(--primary)">1期 7名</span>
+  <div class="mgrid">
+    <div class="mcard"><div class="nn">さっきー</div><div class="rg">📍 東京都</div></div>
+    <div class="mcard"><div class="nn">わだちゃん</div><div class="rg">📍 愛知県</div></div>
+    <div class="mcard"><div class="nn">まめちゃん</div><div class="rg">📍 東京都</div><div class="nt">★幹事・総括・食事担当</div></div>
+    <div class="mcard"><div class="nn">NAMIちゃん</div><div class="rg">📍 長野県</div><div class="nt">★2日目観光担当</div></div>
+    <div class="mcard"><div class="nn">たか</div><div class="rg">📍 和歌山県</div></div>
+    <div class="mcard"><div class="nn">ゆみちゃん</div><div class="rg">📍 大阪府</div></div>
+    <div class="mcard" style="border-top-color:var(--warm)"><div class="nn">ゆうちゃん</div><div class="rg">📍 埼玉県</div><div class="nt"><span class="tag o">日帰り</span></div></div>
+  </div>
+
+  <span class="pbadge" style="background:var(--accent)">2期 7名</span>
+  <div class="mgrid">
+    <div class="mcard" style="border-top-color:var(--accent)"><div class="nn" style="color:var(--accent)">よっしー</div><div class="rg">📍 神奈川県</div><div class="nt">到着：16:00頃</div></div>
+    <div class="mcard" style="border-top-color:var(--accent)"><div class="nn" style="color:var(--accent)">Tomoki</div><div class="rg">📍 埼玉県</div><div class="nt">★幹事・食事担当　車で相乗り予定</div></div>
+    <div class="mcard" style="border-top-color:var(--accent)"><div class="nn" style="color:var(--accent)">みなこちゃん</div><div class="rg">📍 三重県</div></div>
+    <div class="mcard" style="border-top-color:var(--accent)"><div class="nn" style="color:var(--accent)">おつね</div><div class="rg">📍 千葉県</div><div class="nt">★幹事・部屋割り担当　到着：お昼〜夕方</div></div>
+    <div class="mcard" style="border-top-color:var(--accent)"><div class="nn" style="color:var(--accent)">ちえっぴ</div><div class="rg">📍 奈良県</div><div class="nt">★幹事・食事担当</div></div>
+    <div class="mcard" style="border-top-color:var(--accent)"><div class="nn" style="color:var(--accent)">さーや</div><div class="rg">📍 千葉県</div></div>
+    <div class="mcard" style="border-top-color:var(--warm)"><div class="nn">あやや</div><div class="rg">📍 埼玉県</div><div class="nt"><span class="tag o">日帰り（6日のみ）</span></div></div>
+  </div>
+
+  <span class="pbadge" style="background:var(--warm)">3期 15名</span>
+  <div class="mgrid">
+    <div class="mcard" style="border-top-color:var(--warm)"><div class="nn" style="color:var(--warm)">Mika</div><div class="rg">📍 宮城県</div></div>
+    <div class="mcard" style="border-top-color:var(--warm)"><div class="nn" style="color:var(--warm)">みかん</div><div class="rg">📍 奈良県</div></div>
+    <div class="mcard" style="border-top-color:var(--warm)"><div class="nn" style="color:var(--warm)">しほママ</div><div class="rg">📍 千葉県</div><div class="nt">到着：11時過ぎ</div></div>
+    <div class="mcard" style="border-top-color:var(--warm)"><div class="nn" style="color:var(--warm)">mayumi</div><div class="rg">📍 神奈川県</div></div>
+    <div class="mcard" style="border-top-color:var(--warm)"><div class="nn" style="color:var(--warm)">くるみん</div><div class="rg">📍 愛知県</div></div>
+    <div class="mcard" style="border-top-color:var(--warm)"><div class="nn" style="color:var(--warm)">みづき</div><div class="rg">📍 山口県</div><div class="nt">到着：軽井沢駅13:30頃</div></div>
+    <div class="mcard" style="border-top-color:var(--warm)"><div class="nn" style="color:var(--warm)">ロールパンナ</div><div class="rg">📍 長野県</div><div class="nt">★幹事・2日目観光担当</div></div>
+    <div class="mcard" style="border-top-color:var(--warm)"><div class="nn" style="color:var(--warm)">しお</div><div class="rg">📍 愛知県</div><div class="nt">到着：お昼過ぎ頃</div></div>
+    <div class="mcard" style="border-top-color:var(--warm)"><div class="nn" style="color:var(--warm)">いく</div><div class="rg">📍 兵庫県</div></div>
+    <div class="mcard" style="border-top-color:var(--warm)"><div class="nn" style="color:var(--warm)">tan</div><div class="rg">📍 埼玉県</div></div>
+    <div class="mcard" style="border-top-color:var(--warm)"><div class="nn" style="color:var(--warm)">なるみん</div><div class="rg">📍 神奈川県</div><div class="nt">到着：14:00</div></div>
+    <div class="mcard" style="border-top-color:var(--warm)"><div class="nn" style="color:var(--warm)">Minami</div><div class="rg">📍 東京都</div><div class="nt">★幹事　到着：14:00〜17:00頃</div></div>
+    <div class="mcard" style="border-top-color:var(--warm)"><div class="nn" style="color:var(--warm)">nozomi</div><div class="rg">📍 栃木県</div><div class="nt">到着：軽井沢駅12時前　⚠️ アレルギー：鯖・にしん</div></div>
+    <div class="mcard" style="border-top-color:var(--warm)"><div class="nn" style="color:var(--warm)">Erika</div><div class="rg">📍 栃木県</div></div>
+    <div class="mcard" style="border-top-color:var(--warm);opacity:.85"><div class="nn">おまめさん</div><div class="rg">📍 神奈川県</div><div class="nt"><span class="tag o">日帰り（6日のみ）</span></div></div>
+  </div>
+
+  <span class="pbadge" style="background:#555">講師 3名</span>
+  <div class="mgrid">
+    <div class="mcard" style="border-top-color:#555"><div class="nn" style="color:#555">イワトモ</div><div class="rg">📍 長野県</div><div class="nt">コース1（千住博美術館）　⚠️ アレルギー：桃・さくらんぼ</div></div>
+    <div class="mcard" style="border-top-color:#555"><div class="nn" style="color:#555">なか</div><div class="rg">📍 新潟県</div><div class="nt">★写真撮影担当</div></div>
+    <div class="mcard" style="border-top-color:#555"><div class="nn" style="color:#555">リエ</div><div class="rg">📍 京都府</div><div class="nt">コース5（ドライブ）希望</div></div>
+  </div>
+</div>
+
+<!-- アレルギー -->
+<div class="card" id="allergy">
+  <div class="card-title" style="border-color:var(--danger)">
+    <span class="icon">⚠️</span><h2 style="color:var(--danger)">アレルギー情報</h2>
+  </div>
+  <table class="tbl r">
+    <thead><tr><th style="width:160px">呼び名</th><th>アレルゲン</th></tr></thead>
+    <tbody>
+      <tr><td><strong>わかな</strong></td><td><span class="tag r">そば</span><span class="tag r">長芋</span></td></tr>
+      <tr><td><strong>nozomi</strong></td><td><span class="tag r">鯖</span><span class="tag r">にしん</span></td></tr>
+      <tr><td><strong>イワトモ</strong></td><td><span class="tag r">桃</span><span class="tag r">さくらんぼ</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="text-align:center;padding:28px 0;color:#aaa;font-size:.85em">
+  SkipF 軽井沢合宿 2026　｜　みんなで最高の合宿にしましょう！🌿
+</div>
+
+</div><!-- /wrap -->
+
+<button class="print-btn" onclick="window.print()">🖨️ 印刷</button>
+
+</body>
+</html>
